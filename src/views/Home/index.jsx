@@ -2,6 +2,7 @@ import CustomSafeArea from "../../components/CustomSafeArea";
 import { View, TextInput, StyleSheet } from "react-native";
 import { Ionicons } from "react-native-vector-icons";
 import { Button } from "react-native-paper";
+import MyCarousel from "../../components/Carousel";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         </View>
         <Button icon="menu" />
       </View>
+      <MyCarousel />
     </CustomSafeArea>
   );
 };
