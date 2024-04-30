@@ -1,30 +1,48 @@
-import { View, Text, Dimensions, Button } from "react-native";
-import { Button as PaperButton } from "react-native-paper";
+import CustomSafeArea from "../../components/CustomSafeArea";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Ionicons } from "react-native-vector-icons";
+import { Button } from "react-native-paper";
 
-const Home = ({ navigation }) => {
+const Home = () => {
   return (
-    <View
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-        height: Dimensions.get("screen").height,
-      }}
-    >
-      <Text style={{ fontSize: 20, marginBottom: 10 }}>Home Screen</Text>
-
-      <Text>Button Default:</Text>
-      <Button title="Details" onPress={() => navigation.navigate("Details")} />
-
-      <Text style={{ marginTop: 10 }}>Button RN Paper</Text>
-      <PaperButton
-        icon="magnify-plus"
-        mode="contained"
-        onPress={() => navigation.navigate("Details")}
-      >
-        Details
-      </PaperButton>
-    </View>
+    <CustomSafeArea>
+      <View style={styles.container}>
+        <View style={styles.searchBar}>
+          <Ionicons name="search" size={12} />
+          <TextInput placeholder="Mau cari apa nih?" />
+        </View>
+        <Button icon="menu" />
+      </View>
+    </CustomSafeArea>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  searchBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderColor: "gray",
+    padding: 10,
+    gap: 10,
+    flex: 1,
+    borderRadius: 50,
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 2,
+      height: 1,
+    },
+    shadowOpacity: 5,
+    shadowRadius: 2,
+    elevation: 5,
+    borderTopWidth: 0,
+    borderLeftWidth: 0.2,
+    backgroundColor: "#f5f5f5",
+  },
+});
 
 export default Home;
