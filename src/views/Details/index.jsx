@@ -9,7 +9,7 @@ const Details = ({ navigation }) => {
         height: Dimensions.get("screen").height,
       }}
     >
-      <Text style={{ fontSize: 20 }}>Details Screen</Text>
+      <Text style={{ fontSize: 20 }}>Detail Screen</Text>
       <Button
         title="Back use .navigate()"
         onPress={() => navigation.navigate("Home")}
