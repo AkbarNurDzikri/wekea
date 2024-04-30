@@ -12,8 +12,8 @@ const Router = () => {
         initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Main" component={Tabs}></Stack.Screen>
-        <Stack.Screen name="Details" component={Details}></Stack.Screen>
+        <Stack.Screen name="Main" component={Tabs} />
+        <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
   );
