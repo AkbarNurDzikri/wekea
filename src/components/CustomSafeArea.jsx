@@ -7,7 +7,7 @@ const CustomSafeArea = ({ children }) => {
         flex: 1,
         paddingTop: 30,
         gap: 15,
-        backgroundColor: "#7BD3EA",
+        backgroundColor: "#DDDDDD",
       }}
     >
       {children}
