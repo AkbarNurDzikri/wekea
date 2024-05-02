@@ -24,7 +24,13 @@ const MyCarousel = () => {
   ];
 
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Carousel
         loop
         width={width - 30}
