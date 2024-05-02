@@ -26,21 +26,14 @@ const MyCarousel = () => {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <Carousel
-        // loop
+        loop
         width={width - 30}
         height={width / 2}
-        // autoPlay={true}
+        autoPlay={true}
         data={images}
         scrollAnimationDuration={1000}
         renderItem={({ item }) => (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <View style={{ flex: 1 }}>
             <Image
               source={{
                 uri: item.imageUrl,
