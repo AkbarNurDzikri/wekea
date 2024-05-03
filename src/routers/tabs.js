@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../views/Home";
-import Favorites from "../views/Favorites";
+import Cart from "../views/Cart";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tabs = () => {
@@ -31,12 +31,12 @@ const Tabs = () => {
         }}
       />
       <Tabs.Screen
-        name="Favorites"
-        component={Favorites}
+        name="Cart"
+        component={Cart}
         options={{
           tabBarIcon: ({ focused, size, color }) => (
             <MaterialIcon
-              name={focused ? "heart" : "heart-outline"}
+              name={focused ? "cart" : "cart-outline"}
               size={size}
               color={color}
             />
