@@ -1,53 +1,93 @@
 import CustomSafeArea from "../../components/CustomSafeArea";
-import { View, Image } from "react-native";
-import { List, Text } from "react-native-paper";
+import { List, Button } from "react-native-paper";
 import { FlatList } from "react-native-gesture-handler";
 import data from "../../utils/dummyDataProducts";
+import { useMemo, useState } from "react";
+import { View } from "react-native";
+import LeftContent from "./LeftContent";
 import currencyFormatter from "../../utils/currencyFormatter";
+import RightContent from "./RightContent";
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState(data);
+  const totalAmount = useMemo(
+    () => cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0),
+    [cartItems]
+  );
+
+  const decreaseQty = (itemIndex) => {
+    const updatedCartItems = cartItems.map((item, index) => {
+      if (index === itemIndex) {
+        return { ...item, qty: item.qty - 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const increaseQty = (itemIndex) => {
+    const updatedCartItems = cartItems.map((item, index) => {
+      if (index === itemIndex) {
+        return { ...item, qty: item.qty + 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
   return (
     <CustomSafeArea>
-      <FlatList data={data} renderItem={(item) => <CartItem data={item} />} />
+      <FlatList
+        data={cartItems}
+        renderItem={(item) => (
+          <View
+            style={{
+              backgroundColor: "#EBEBEB",
+              marginVertical: 3,
+              marginHorizontal: 15,
+              borderRadius: 10,
+            }}
+          >
+            <CartItem
+              dataTarget={item}
+              decreaseQty={decreaseQty}
+              increaseQty={increaseQty}
+            />
+          </View>
+        )}
+      />
+
+      <View
+        style={{ justifyContent: "center", marginHorizontal: 20, bottom: 20 }}
+      >
+        <Button
+          mode="contained"
+          icon="send"
+          style={{
+            padding: 5,
+          }}
+        >
+          Checkout {currencyFormatter(totalAmount)}
+        </Button>
+      </View>
     </CustomSafeArea>
   );
 };
 
-const CartItem = ({ data }) => {
+const CartItem = ({ dataTarget, decreaseQty, increaseQty }) => {
   return (
     <List.Item
-      left={() => <LeftContent data={data} />}
+      left={() => <LeftContent dataTarget={dataTarget} />}
+      right={() => (
+        <RightContent
+          dataTarget={dataTarget}
+          decreaseQty={decreaseQty}
+          increaseQty={increaseQty}
+        />
+      )}
       style={{ paddingVertical: 0 }}
     />
   );
-};
-
-const LeftContent = ({ data }) => (
-  <View
-    style={{
-      flexDirection: "row",
-      gap: 20,
-      padding: 10,
-      marginHorizontal: 10,
-      width: "100%",
-      backgroundColor: "white",
-      borderRadius: 5,
-      alignItems: "center",
-    }}
-  >
-    <Image
-      source={{ uri: data.item.source }}
-      style={{ width: 50, height: 50, borderRadius: 5 }}
-    />
-    <View>
-      <Text variant="titleMedium">{data.item.title}</Text>
-      <Text variant="titleSmall">{currencyFormatter(data.item.price)}</Text>
-    </View>
-  </View>
-);
-
-const RightContent = ({ data }) => {
-  return {};
 };
 
 export default Cart;
