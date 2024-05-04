@@ -36,7 +36,7 @@ const RightContent = ({ dataTarget, cartItems, setCartItems }) => {
           icon="minus"
           onPress={() => handleQty(dataTarget.index, "decrement")}
         />
-        <Text>{dataTarget.item.qty}</Text>
+        <Text variant="bodyMedium">{dataTarget.item.qty}</Text>
         <Button
           mode="text"
           icon="plus"
@@ -44,7 +44,7 @@ const RightContent = ({ dataTarget, cartItems, setCartItems }) => {
         />
       </View>
       <View>
-        <Text style={{ fontWeight: "bold" }}>
+        <Text variant="bodyMedium" style={{ fontWeight: "bold" }}>
           {currencyFormatter(subTotal)}
         </Text>
       </View>

@@ -19,9 +19,11 @@ const Transaction = () => {
           return (
             <View style={styles.container} key={index}>
               <View style={styles.transHeader}>
-                <Text>{item.date}</Text>
+                <Text variant="bodyMedium">{item.date}</Text>
                 <View style={styles.transStatus}>
-                  <Text style={styles.transStatusText}>{item.status}</Text>
+                  <Text variant="bodyMedium" style={styles.transStatusText}>
+                    {item.status}
+                  </Text>
                 </View>
               </View>
               {item?.items?.map((i, index) => (
@@ -32,12 +34,16 @@ const Transaction = () => {
                       style={styles.transBodyImage}
                     />
                     <View style={{ justifyContent: "center" }}>
-                      <Text style={styles.transBodyTitle}>{i.name}</Text>
-                      <Text>Qty: {i.qty}</Text>
+                      <Text variant="bodyMedium" style={styles.transBodyTitle}>
+                        {i.name}
+                      </Text>
+                      <Text variant="bodyMedium">Qty: {i.qty}</Text>
                     </View>
                   </View>
                   <View>
-                    <Text>{currencyFormatter(i.price)}</Text>
+                    <Text variant="bodyMedium">
+                      {currencyFormatter(i.price)}
+                    </Text>
                   </View>
                 </View>
               ))}
@@ -45,7 +51,7 @@ const Transaction = () => {
               <View style={styles.transBodyFooter}>
                 <Pressable>
                   <View style={styles.transBodyFooterButton}>
-                    <Text>Lacak</Text>
+                    <Text variant="bodyMedium">Lacak</Text>
                   </View>
                 </Pressable>
               </View>

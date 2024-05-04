@@ -16,7 +16,9 @@ const CategoryGenerator = ({ name, color, label }) => {
       }}
     >
       <MaterialIcon name={name} size={24} color={color} />
-      <Text style={{ maxWidth: 50 }}>{label}</Text>
+      <Text variant="bodySmall" style={{ maxWidth: 50 }}>
+        {label}
+      </Text>
     </View>
   );
 };
