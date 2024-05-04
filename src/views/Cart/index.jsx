@@ -15,6 +15,9 @@ const Cart = () => {
     () => cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0),
     [cartItems]
   );
+  const handleDelete = (itemId) => {
+    setCartItems(cartItems.filter((item) => item.id !== itemId));
+  };
 
   return (
     <CustomSafeArea>
@@ -33,15 +36,16 @@ const Cart = () => {
               renderRightActions={() => (
                 <View
                   style={{
-                    backgroundColor: "red",
                     alignItems: "center",
                     justifyContent: "center",
-                    padding: 10,
-                    borderBottomRightRadius: 10,
-                    borderTopRightRadius: 10,
                   }}
                 >
-                  <MaterialIcon name="trash-can" size={24} color="white" />
+                  <Button
+                    mode="text"
+                    icon="trash-can"
+                    textColor="red"
+                    onPress={() => handleDelete(item.item.id)}
+                  />
                 </View>
               )}
             >
