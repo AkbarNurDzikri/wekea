@@ -2,8 +2,20 @@ import { View } from "react-native";
 import { Button, Text } from "react-native-paper";
 import currencyFormatter from "../../utils/currencyFormatter";
 
-const RightContent = ({ dataTarget, decreaseQty, increaseQty }) => {
+const RightContent = ({ dataTarget, cartItems, setCartItems }) => {
   const subTotal = dataTarget.item.qty * dataTarget.item.price;
+  const handleQty = (itemIndex, condition) => {
+    const updatedCartItems = cartItems.map((item, index) => {
+      if (index === itemIndex) {
+        return {
+          ...item,
+          qty: condition === "increment" ? item.qty + 1 : item.qty - 1,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
 
   return (
     <View
@@ -22,13 +34,13 @@ const RightContent = ({ dataTarget, decreaseQty, increaseQty }) => {
           disabled={dataTarget.item.qty === 1}
           mode="text"
           icon="minus"
-          onPress={() => decreaseQty(dataTarget.index)}
+          onPress={() => handleQty(dataTarget.index, "decrement")}
         />
         <Text>{dataTarget.item.qty}</Text>
         <Button
           mode="text"
           icon="plus"
-          onPress={() => increaseQty(dataTarget.index)}
+          onPress={() => handleQty(dataTarget.index, "increment")}
         />
       </View>
       <View>
