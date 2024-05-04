@@ -3,11 +3,7 @@ import { Text } from "react-native-paper";
 
 const FlashSale = () => {
   return (
-    <View
-      style={{
-        padding: 10,
-      }}
-    >
+    <View>
       <Text variant="headlineSmall" style={{ fontWeight: "bold" }}>
         Flash Sale!
       </Text>

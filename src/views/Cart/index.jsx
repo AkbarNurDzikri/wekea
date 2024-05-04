@@ -7,7 +7,7 @@ import { View } from "react-native";
 import currencyFormatter from "../../utils/currencyFormatter";
 import CartItem from "./CartItem";
 import { Swipeable } from "react-native-gesture-handler";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import Animated, { SlideOutLeft } from "react-native-reanimated";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState(data);
@@ -24,7 +24,8 @@ const Cart = () => {
       <FlatList
         data={cartItems}
         renderItem={(item) => (
-          <View
+          <Animated.View
+            exiting={SlideOutLeft.duration(1000)}
             style={{
               backgroundColor: "#EBEBEB",
               marginVertical: 3,
@@ -55,7 +56,7 @@ const Cart = () => {
                 setCartItems={setCartItems}
               />
             </Swipeable>
-          </View>
+          </Animated.View>
         )}
       />
 

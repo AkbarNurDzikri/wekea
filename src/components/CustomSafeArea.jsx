@@ -5,9 +5,9 @@ const CustomSafeArea = ({ children }) => {
     <View
       style={{
         flex: 1,
-        paddingTop: 30,
-        gap: 15,
+        paddingTop: 15,
         backgroundColor: "#DDDDDD",
+        paddingHorizontal: 10,
       }}
     >
       {children}

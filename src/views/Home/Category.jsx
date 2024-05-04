@@ -23,7 +23,7 @@ const CategoryGenerator = ({ name, color, label }) => {
 
 const Category = () => {
   return (
-    <View style={{ marginHorizontal: 15 }}>
+    <View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <CategoryGenerator name="mouse" color="black" label="Mouse" />
         <CategoryGenerator name="monitor" color="black" label="Monitor" />

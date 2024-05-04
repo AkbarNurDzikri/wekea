@@ -24,15 +24,8 @@ const CardGenerator = ({ imageSource, title, price }) => (
 
 const CardProduct = () => {
   return (
-    <View
-      style={{
-        marginHorizontal: 15,
-      }}
-    >
-      <Text
-        variant="headlineSmall"
-        style={{ fontWeight: "bold", marginBottom: 10 }}
-      >
+    <View>
+      <Text variant="headlineSmall" style={{ fontWeight: "bold" }}>
         Popular
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

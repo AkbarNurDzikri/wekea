@@ -11,6 +11,7 @@ const Home = () => {
     { key: "carousel", component: <MyCarousel /> },
     { key: "category", component: <Category /> },
     { key: "flashsale", component: <FlashSale /> },
+    { key: "cardProduct", component: <CardProduct /> },
   ];
 
   const renderItem = ({ item }) => (
@@ -23,7 +24,7 @@ const Home = () => {
         ListHeaderComponent={<MySearchbar />}
         data={data}
         renderItem={renderItem}
-        ListFooterComponent={<CardProduct />}
+        // ListFooterComponent={<CardProduct />}
       />
     </CustomSafeArea>
   );
