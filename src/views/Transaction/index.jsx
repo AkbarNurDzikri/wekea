@@ -9,52 +9,50 @@ import currencyFormatter from "../../utils/currencyFormatter";
 const Transaction = () => {
   return (
     <CustomSafeArea>
-      <View>
-        <Searchbar style={styles.searchbar} placeholder="Mau cari apa?" />
+      <Searchbar style={styles.searchbar} placeholder="Mau cari apa?" />
 
-        <FlatList
-          style={{ marginTop: 10 }}
-          showsVerticalScrollIndicator={false}
-          data={dummyDataTransaction}
-          renderItem={({ item, index }) => {
-            return (
-              <View style={styles.container} key={index}>
-                <View style={styles.transHeader}>
-                  <Text>{item.date}</Text>
-                  <View style={styles.transStatus}>
-                    <Text style={styles.transStatusText}>{item.status}</Text>
-                  </View>
-                </View>
-                {item?.items?.map((i, index) => (
-                  <View style={styles.transBodyContainer} key={index}>
-                    <View style={styles.transBody}>
-                      <Image
-                        source={{ uri: i.image }}
-                        style={styles.transBodyImage}
-                      />
-                      <View style={{ justifyContent: "center" }}>
-                        <Text style={styles.transBodyTitle}>{i.name}</Text>
-                        <Text>Qty: {i.qty}</Text>
-                      </View>
-                    </View>
-                    <View>
-                      <Text>{currencyFormatter(i.price)}</Text>
-                    </View>
-                  </View>
-                ))}
-                <Divider />
-                <View style={styles.transBodyFooter}>
-                  <Pressable>
-                    <View style={styles.transBodyFooterButton}>
-                      <Text>Lacak</Text>
-                    </View>
-                  </Pressable>
+      <FlatList
+        style={{ marginTop: 10 }}
+        showsVerticalScrollIndicator={false}
+        data={dummyDataTransaction}
+        renderItem={({ item, index }) => {
+          return (
+            <View style={styles.container} key={index}>
+              <View style={styles.transHeader}>
+                <Text>{item.date}</Text>
+                <View style={styles.transStatus}>
+                  <Text style={styles.transStatusText}>{item.status}</Text>
                 </View>
               </View>
-            );
-          }}
-        />
-      </View>
+              {item?.items?.map((i, index) => (
+                <View style={styles.transBodyContainer} key={index}>
+                  <View style={styles.transBody}>
+                    <Image
+                      source={{ uri: i.image }}
+                      style={styles.transBodyImage}
+                    />
+                    <View style={{ justifyContent: "center" }}>
+                      <Text style={styles.transBodyTitle}>{i.name}</Text>
+                      <Text>Qty: {i.qty}</Text>
+                    </View>
+                  </View>
+                  <View>
+                    <Text>{currencyFormatter(i.price)}</Text>
+                  </View>
+                </View>
+              ))}
+              <Divider />
+              <View style={styles.transBodyFooter}>
+                <Pressable>
+                  <View style={styles.transBodyFooterButton}>
+                    <Text>Lacak</Text>
+                  </View>
+                </Pressable>
+              </View>
+            </View>
+          );
+        }}
+      />
     </CustomSafeArea>
   );
 };

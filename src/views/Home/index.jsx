@@ -20,11 +20,12 @@ const Home = () => {
 
   return (
     <CustomSafeArea>
+      <MySearchbar />
       <FlatList
-        ListHeaderComponent={<MySearchbar />}
+        showsVerticalScrollIndicator={false}
         data={data}
         renderItem={renderItem}
-        // ListFooterComponent={<CardProduct />}
+        style={{ marginTop: 10 }}
       />
     </CustomSafeArea>
   );

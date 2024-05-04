@@ -25,11 +25,10 @@ const Cart = () => {
         data={cartItems}
         renderItem={(item) => (
           <Animated.View
-            exiting={SlideOutLeft.duration(1000)}
+            exiting={SlideOutLeft.duration(500)}
             style={{
               backgroundColor: "#EBEBEB",
-              marginVertical: 3,
-              marginHorizontal: 15,
+              marginVertical: 5,
               borderRadius: 10,
             }}
           >
@@ -60,14 +59,13 @@ const Cart = () => {
         )}
       />
 
-      <View
-        style={{ justifyContent: "center", marginHorizontal: 20, bottom: 20 }}
-      >
+      <View style={{ justifyContent: "center", bottom: 20 }}>
         <Button
           mode="contained"
           icon="send"
           style={{
             padding: 5,
+            borderRadius: 5,
           }}
         >
           Checkout {currencyFormatter(totalAmount)}
